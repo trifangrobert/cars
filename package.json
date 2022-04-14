@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trifangrobert/lamborghini.git"
+    "url": "git+https://github.com/trifangrobert/cars.git"
   },
   "keywords": [
     "lamborghini",
@@ -23,9 +23,9 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/trifangrobert/lamborghini/issues"
+    "url": "https://github.com/trifangrobert/cars/issues"
   },
-  "homepage": "https://github.com/trifangrobert/lamborghini#readme",
+  "homepage": "https://github.com/trifangrobert/cars#readme",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.3",
