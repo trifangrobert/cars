@@ -18,10 +18,10 @@ const session = require("express-session");
 
 var client = new Client({
   host:"ec2-34-197-84-74.compute-1.amazonaws.com",
-  database: "d8e6p7u885ffht",
-  user: "wabkruepcqhxmn",
+  database: "d989gttf1p9fhd",
+  user: "fyvkjtwtyjemoz",
   port: 5432,
-  password:"a7958fd432307c231627e45a491d74fd4dd8367474908cbb039d002c81049796",
+  password:"5b1b328739cc32128ec291f5f3ef636f2c606bc14ff75f71822f6965bb60f969",
   ssl: {
     rejectUnauthorized: false
   }
