@@ -8,24 +8,25 @@ const formidable = require("formidable");
 const crypto = require("crypto");
 const session = require("express-session");
 // const { Client } = require("pg/lib");
-// var client = new Client({
-//   database: "bd_lamborghini",
-//   user: "king",
-//   password: "1248",
-//   host: "localhost",
-//   port: 5432,
-// });
 
 var client = new Client({
-  host:"ec2-34-197-84-74.compute-1.amazonaws.com",
-  database: "d989gttf1p9fhd",
-  user: "fyvkjtwtyjemoz",
+  database: "bd_lamborghini",
+  user: "king",
+  password: "1248",
+  host: "localhost",
   port: 5432,
-  password:"5b1b328739cc32128ec291f5f3ef636f2c606bc14ff75f71822f6965bb60f969",
-  ssl: {
-    rejectUnauthorized: false
-  }
 });
+
+// var client = new Client({
+//   host:"ec2-34-197-84-74.compute-1.amazonaws.com",
+//   database: "d989gttf1p9fhd",
+//   user: "fyvkjtwtyjemoz",
+//   port: 5432,
+//   password:"5b1b328739cc32128ec291f5f3ef636f2c606bc14ff75f71822f6965bb60f969",
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
 
 
 
@@ -48,6 +49,13 @@ client.query(
   "select * from unnest(enum_range(null::categ_modele))",
   function (err, rezCateg) {
     obGlobal.optiuni = rezCateg.rows;
+  }
+);
+
+client.query(
+  "select * from unnest(enum_range(null::tipuri_produse))",
+  function (err, rezCateg) {
+    obGlobal.modele = rezCateg.rows;
   }
 );
 
@@ -87,6 +95,7 @@ app.get("/produse", function (req, res) {
           res.render("pagini/produse", {
             produse: rezQuery.rows,
             optiuni: obGlobal.optiuni,
+            modele: obGlobal.modele
           });
         }
       );
@@ -119,6 +128,7 @@ app.get("/produse/:categ", function (req, res) {
             res.render("pagini/produse", {
               produse: rezQuery.rows,
               optiuni: obGlobal.optiuni,
+              modele: obGlobal.modele
             });
           }
         }
@@ -276,8 +286,8 @@ function randeazaEroare(res, identificator, titlu, text, imagine) {
   });
 }
 
-var s_port = process.env.PORT || 8080;
-app.listen(s_port);
+// var s_port = process.env.PORT || 8080;
+// app.listen(s_port);
 
 app.listen(8080);
 console.log("They see me coding...");
