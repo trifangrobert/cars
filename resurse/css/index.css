@@ -544,3 +544,15 @@ nav ul.menu > li:hover > ul {
   border-left: 30px solid green;
   border-right: 30px solid green;
 }
+
+
+#btn_tema {
+  background-color: transparent;
+  border: 0;
+  width: 3em;
+  height: 3em;
+}
+
+#btn_tema:hover {
+  cursor: pointer;
+}

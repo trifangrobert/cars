@@ -7,6 +7,7 @@
     <%- include("../fragmente/head.ejs"); %>
     <link rel="stylesheet" href="/resurse/css/print.css" />
     <link rel="stylesheet" href="/resurse/css/galerie_animata.css" />
+    
   </head>
   <body>
     <div id="banner">
@@ -44,10 +45,26 @@
     <main>
       <p id="watermark"></p>
 
-      <p><%- locals.ip%></p>
+      <p><%- locals.ip %></p>
       <%- include("../fragmente/galerie-statica.ejs"); %>
-
-      <p><button id="btn_tema">Schimba tema</button></p>
+     
+        <button id="btn_tema"><span id="btn_tema_span" class="fa-solid fa-moon" ></span></button>
+      <% if (!locals.utilizator) { %>
+      <form id="form_inreg"  method="post" class="date"  action="/login"  enctype="multipart/form-data">
+        <p>
+            <label>
+                Username: <input type="text" name="username" id="inp-username" value="prof<%= Math.floor(Math.random()*100000) %>" required pattern="[A-Za-z0-9]+">
+            </label>
+        </p>
+        <p>
+            <label>
+                Parola: <input id="parl" type="password" required  name="parola" value="">
+            </label>
+        </p>
+        <p><input type="submit" value="logare"></p>
+      </form>
+      <% } %>
+      <%- locals.mesajLogin %>
 
       <div id="grid-container">
         <div id="id1">
@@ -282,6 +299,14 @@
           </div>
         </div>
       </div>
+      <section id="fig1" class="fg-imag">
+        <h2>Useri online:</h2>
+        <ul>
+          <% for (let u of locals.useriOnline) { %>
+            <li><%- u.username %>(<%- u.nume %>)</li>
+          <% } %>
+        </ul>
+      </section>
       <div id="cont-iframe">
         <div id="cont-linkuri">
           <a href="https://www.youtube.com/embed/5ZawH-aKmLY" target="ifr"

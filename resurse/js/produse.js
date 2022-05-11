@@ -160,6 +160,17 @@ window.onload = function () {
       document.getElementById("inp-pret").value = 0;
       document.getElementById("infoRange").innerHTML = "(0)";
       document.getElementById("sel-toate").selected = true;
+      document.getElementById("input-news").checked = false;
+      document.getElementById("input_keywords").value = "";
+      let aux = document.getElementById(
+        "inp-categorie-multiplu"
+      );
+      for (let i = 0; i < aux.length; ++i) {
+        if (aux[i].selected) {
+          aux[i].selected = false;
+        }
+      }
+      document.getElementById("sel-toate-multiplu").selected = true;
     }
   };
 
@@ -169,10 +180,10 @@ window.onload = function () {
     v_articole.sort(function (a, b) {
       var pret_a = parseFloat(
         a.getElementsByClassName("val-pret")[0].innerHTML
-      );
+      ) / parseFloat(a.getElementsByClassName("val-calorii")[0].innerHTML);
       var pret_b = parseFloat(
         b.getElementsByClassName("val-pret")[0].innerHTML
-      );
+      ) / parseFloat(b.getElementsByClassName("val-calorii")[0].innerHTML);;
       if (pret_a !== pret_b) {
         return semn * (pret_a - pret_b);
       } else {

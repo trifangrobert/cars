@@ -31,6 +31,7 @@
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "formidable": "^2.0.1",
+    "nodemailer": "^6.7.3",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
     "sass": "^1.49.9",

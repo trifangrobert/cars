@@ -1,51 +1,68 @@
 <script>
   var tema = localStorage.getItem("tema");
-    if (tema) {
-        document.body.classList.add("dark");
-    }
-    else {
-        document.body.classList.remove("dark");
-    }
+  if (tema) {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
 </script>
 
 <link rel="stylesheet" href="./resurse/css/print.css" />
 
+
 <header>
-    <h1 id="site-title">Masini bengoase</h1>
-    <nav>
-      <label id="hamburger" for="ch-menu">
-        <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="hamburger">
-      </label>
-      <input id="ch-menu" type="checkbox">
+  <h1 id="site-title">Masini bengoase</h1>
+  <nav>
+    <label id="hamburger" for="ch-menu">
+      <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="hamburger" />
+    </label>
+    <input id="ch-menu" type="checkbox" />
 
-      <ul class="menu">
-        <li>
-          <a href="index"><span id="home-display" class="fas fa-home"></span><span id="home-write">Acasa</span></a>
-        </li>
-        <li>
-          <div>Produse</div>
-          <ul class="submenu">
-            <!-- pagini pentru alte masini -->
+    <ul class="menu">
+      <li>
+        <a href="index"
+          ><span id="home-display" class="fas fa-home"></span
+          ><span id="home-write">Acasa</span></a
+        >
+      </li>
+      <li>
+        <a href="/produse">Produse</a>
+        <ul class="submenu">
+          <!-- pagini pentru alte masini -->
 
-            <% 
-            for (let opt of locals.optiuni) { %>
-              <li><a href="/produse/<%- opt.unnest %>"><%- opt.unnest %></a></li>  
-            <% } %>
-          </ul>
-        </li>
-        <li>
-          <div>Accesare rapida</div>
-          <ul class="submenu">
-            <li><a href="#details-car">Lamborghini</a></li>
-            <li><a href="#lambo-founder">Fondator</a></li>
-          </ul>
-        </li>
-        <li><a href="despre">Despre</a></li>
-        <li><a href="index">Contact</a></li>
-        <li><a href="inregistrare">Inregistrare</a></li>
-      </ul>
-    </nav>
-    <div title="go back to the top" class="rotated-square">
-      <a href="#" class="triangle"></a>
-    </div>
-  </header>
+          <% for (let opt of locals.optiuni) { %>
+          <li><a href="/produse/<%- opt.unnest %>"><%- opt.unnest %></a></li>
+          <% } %>
+        </ul>
+      </li>
+      <li>
+        <div>Accesare rapida</div>
+        <ul class="submenu">
+          <li><a href="#details-car">Lamborghini</a></li>
+          <li><a href="#lambo-founder">Fondator</a></li>
+        </ul>
+      </li>
+      <li><a href="despre">Despre</a></li>
+      <li><a href="index">Contact</a></li>
+      <li><a href="/inregistrare">Inregistrare</a></li>
+
+      <% if(locals.utilizator && locals.utilizator.rol == "admin") { %>
+        <li><a href="/useri">Useri</a></li>
+      <% } %>
+      <% if(locals.utilizator) { %>
+      <li>
+        <div href="#"><%- locals.utilizator.username %></div>
+        <ul>
+          <li><a href="/profil">Profil</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+  <div title="go back to the top" class="rotated-square">
+    <a href="#" class="triangle"></a>
+  </div>
+</header>
+
+
